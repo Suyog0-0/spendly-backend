@@ -1,0 +1,4 @@
+.env
+node_modules/
+.DS_Store
+spendly-backend@1.0.0

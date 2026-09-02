@@ -1,0 +1,8 @@
+services:
+  backend:
+    build: .
+    container_name: spendly-backend-container
+    ports:
+      - "5050:5050"
+    env_file:
+      - .env

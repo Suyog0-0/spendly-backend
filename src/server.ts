@@ -15,3 +15,5 @@ app.get("/", getHealth);
 app.listen(PORT, () => {
   console.log(` Server running on http://localhost:${PORT}`);
 });
+
+// docker run -p 5050:5050 --env-file .env --name spendly-backend-container spendly-backend
