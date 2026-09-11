@@ -1,13 +1,13 @@
-// src/models/User.ts
-import mongoose from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
-export interface IUser {
+export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  avatar?: string;
 }
 
-const userSchema = new mongoose.Schema<IUser>(
+const userSchema = new Schema<IUser>(
   {
     name: {
       type: String,
@@ -17,12 +17,13 @@ const userSchema = new mongoose.Schema<IUser>(
       type: String,
       required: true,
       unique: true,
-      lowercase: true,
-      trim: true,
     },
     password: {
       type: String,
       required: true,
+    },
+    avatar: {
+      type: String,
     },
   },
   {

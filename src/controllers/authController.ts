@@ -72,3 +72,27 @@ export const loginUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+export const uploadAvatar = async (req: Request, res: Response) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
+
+    const userId = (req as any).userId.id;
+
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { avatar: req.file.path },
+      { new: true },
+    );
+
+    res.status(200).json({
+      message: "Avatar uploaded successfully",
+      avatar: updatedUser?.avatar,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Server error" });
+  }
+};
