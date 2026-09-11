@@ -4,6 +4,7 @@ import cors from "cors";
 import { getHealth } from "./controllers/healthController.js";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
+import expenseRoutes from "./routes/expenseRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -16,6 +17,7 @@ app.use(express.json());
 
 app.get("/", getHealth);
 app.use("/api/auth", authRoutes);
+app.use("/api/expenses", expenseRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
